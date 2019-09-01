@@ -17,12 +17,16 @@
 
     <div class="starter-template">
       <h1>Seattle Restaurant Data</h1>
-      <p>Check out Seattle restaurant health safety ratings by neighborhoods.</p>
+      <p>Average health inspection rating in various neighborhoods. Based on inspection data from 2019.</p>
     </div>
   
     <div id="map"></div>
 </div>
 
+<script>
+  var ratings = {{ ratings | tojson }}
+  var zip_codes = {{ zip_codes | tojson }}
+</script>
 <script src="{{ url_for('.static', filename = 'js/map.js') }}"></script>
 
 {% endblock %}

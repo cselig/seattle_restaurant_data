@@ -1,3 +1,5 @@
+import json
+
 from flask import render_template, url_for
 from app import app
 
@@ -5,7 +7,9 @@ from app import app
 @app.route('/index')
 @app.route('/home')
 def index():
-    return render_template('home.html')
+    ratings = json.load(open('./app/static/data/ratings.json'))
+    zip_codes = json.load(open('./app/static/data/zip_codes.geojson'))
+    return render_template('home.html', ratings=ratings, zip_codes=zip_codes)
 
 @app.errorhandler(404)
 def page_not_found(e):
